@@ -6,9 +6,9 @@
 #define SNAKE_BTN_PIN_BA 7
 
 #define SNAKE_MAXSIZE 256
-#define SNAKE_DELAY_INICIAL 200
-#define SNAKE_DELAY_DECREMENTO 1
-#define SNAKE_DELAY_MINIMO 50
+#define SNAKE_DELAY_INICIAL 350
+#define SNAKE_DELAY_DECREMENTO 4
+#define SNAKE_DELAY_MINIMO 100
 
 
 #define SNAKE_BTN_NO 0
@@ -207,6 +207,10 @@ void jogarSnake(bool modo){
     GRAFICO_printStr(string+0, 7,-k,0 ,true, 0, 1, 0,0,0,1);
     if(Serial.available()){
       Serial.read();
+      return;
+    }
+    if(!digitalRead(BOTAO1)){
+      while(!digitalRead(BOTAO1));
       return;
     }
     k++;
